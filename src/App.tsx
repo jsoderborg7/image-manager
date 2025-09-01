@@ -1,12 +1,16 @@
 import ImageDisplay from './components/imageDisplay'
+import ImageUploadForm from './components/imageUploadForm'
 import useImages from './hooks/useImages'
 
 const App: React.FC = () => {
-  const {images} = useImages()
+  const {images, uploadImage, deleteImage} = useImages()
+
+
 
   return (
     <>
-    <ImageDisplay displayImages={images}/>
+    <ImageUploadForm handleUpload={uploadImage}/>
+    <ImageDisplay displayImages={images} handleDeleteImage={deleteImage}/>
     </>
   )
 }

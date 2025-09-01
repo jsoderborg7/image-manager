@@ -13,11 +13,13 @@ const StyledImage = styled.img`
 
 interface cardProps {
     image: Image;
+    handleDeleteImage: (id: string) => void
 }
-const ImageCard: React.FC<cardProps> = ({image}) =>{
+const ImageCard: React.FC<cardProps> = ({image, handleDeleteImage}) =>{
     return(
         <Card>
             <StyledImage src={image.imageUrl} alt={image.name} />
+            <button onClick={()=> handleDeleteImage(image.id)}>Delete</button>
         </Card>
     )
 }

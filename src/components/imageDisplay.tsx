@@ -10,14 +10,15 @@ const ImageContainer = styled.div`
 `
 
 interface DisplayProps {
-    displayImages: Image[]
+    displayImages: Image[],
+    handleDeleteImage: (id: string) => void
 }
 
-const ImageDisplay: React.FC<DisplayProps> = ({displayImages}) =>{
+const ImageDisplay: React.FC<DisplayProps> = ({displayImages, handleDeleteImage}) =>{
     return(
         <ImageContainer>
             {displayImages && displayImages.map((img) => (
-                <ImageCard key={img.id} image={img} />
+                <ImageCard key={img.id} image={img} handleDeleteImage={handleDeleteImage} />
             ))}
         </ImageContainer>
     )
