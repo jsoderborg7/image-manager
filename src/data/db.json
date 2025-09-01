@@ -1,0 +1,22 @@
+{
+    "images": [
+    {
+        "id": 1,
+        "name": "Jenn Bridal",
+        "imageUrl": "src/assets/jennBridal.jpg"
+    
+    },
+    {
+        "id": 2,
+        "name": "Flower bouquet",
+        "imageUrl": "src/assets/flowers.jpg"
+    
+    },
+    {
+        "id": 3,
+        "name": "Beach sunset",
+        "imageUrl": "src/assets/beachSunset.jpg"
+    
+    }
+    ]
+}
