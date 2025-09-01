@@ -4,9 +4,10 @@ import type { ImageUpload } from "../hooks/useImages";
 
 interface UploadProps {
     handleUpload: (image: ImageUpload) => void
+    handleCloseModal: () => void
 }
 
-const ImageUploadForm: React.FC<UploadProps> = ({handleUpload}) =>{
+const ImageUploadForm: React.FC<UploadProps> = ({handleUpload, handleCloseModal}) =>{
     const [imageName, setImageName] = useState("")
     const [file, setFile] = useState<File | null>(null)
     const [errorMessage, setErrorMessage] = useState("")
@@ -29,6 +30,7 @@ const ImageUploadForm: React.FC<UploadProps> = ({handleUpload}) =>{
                 handleUpload({name: imageName, imageUrl: URL.createObjectURL(file)})
                 setImageName("")
                 setFile(null)
+                handleCloseModal()
             } else {
                 console.error('Error reading file', reader.error)
             }
