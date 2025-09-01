@@ -16,14 +16,14 @@
       "imageUrl": "src/assets/beachSunset.jpg"
     },
     {
-      "id": "3680",
-      "name": "Hagrid",
-      "imageUrl": "blob:http://localhost:5174/a45b20c0-3269-4665-ac44-bfd87948218c"
-    },
-    {
       "id": "313d",
       "name": "Fang",
       "imageUrl": "blob:http://localhost:5174/2daf830f-787d-4c1e-84de-87c7d0c45526"
+    },
+    {
+      "id": "e892",
+      "name": "Hagrid",
+      "imageUrl": "blob:http://localhost:5174/d39c29c9-c2fc-45e8-bb93-d506a843c52e"
     }
   ]
 }
