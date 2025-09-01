@@ -1,6 +1,18 @@
 import { useState } from "react";
 import type { ChangeEvent, FormEvent } from "react";
 import type { ImageUpload } from "../hooks/useImages";
+import { Alert } from "@mui/material";
+import styled from "styled-components";
+
+const StyledForm = styled.form`
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+`
 
 interface UploadProps {
     handleUpload: (image: ImageUpload) => void
@@ -21,28 +33,19 @@ const ImageUploadForm: React.FC<UploadProps> = ({handleUpload, handleCloseModal}
         if (!imageName || !file){
             setErrorMessage("Image selection and name are required, please select an image and give it a name!")
             console.log(errorMessage)
+        } else {
+            file && imageName && handleUpload({name: imageName, imageUrl: URL.createObjectURL(file)})
+            setImageName("")
+            setFile(null)
+            setErrorMessage("")
+            handleCloseModal()
         }
-        setErrorMessage("")
-        const reader = new FileReader()
-        file && reader.readAsDataURL(file)
-        reader.onloadend = () =>{
-            if (file){
-                handleUpload({name: imageName, imageUrl: URL.createObjectURL(file)})
-                setImageName("")
-                setFile(null)
-                handleCloseModal()
-            } else {
-                console.error('Error reading file', reader.error)
-            }
-        }
-        reader.onerror = () =>{
-            console.error("Error reading file", reader.error)
-        }
+
     }
 
     return(
        <>
-       <form onSubmit={handleSubmitForm}>
+       <StyledForm onSubmit={handleSubmitForm}>
         <label>Name Your Image</label>
         <input
             type="text"
@@ -56,7 +59,8 @@ const ImageUploadForm: React.FC<UploadProps> = ({handleUpload, handleCloseModal}
             onChange={handleChange}
         />
         <button type="submit">Upload</button>
-       </form>
+       </StyledForm>
+       {errorMessage && <Alert severity="warning">Both file and name are required</Alert>}
        </> 
     )
 }

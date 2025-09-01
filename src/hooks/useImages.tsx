@@ -16,17 +16,17 @@ const useImages = () =>{
   const [images, setImages] = useState<Image[]>([])  
 
   useEffect(() =>{
-    const fetchImages = async () => {
-        try {
-            const response: AxiosResponse<Image[]> = await axios.get<Image[]>("http://localhost:3000/images")
-            setImages(response.data)
-        } catch (err) {
-            console.error(err)
-        }
-    }
     fetchImages()
   },[])
 
+  const fetchImages = async () => {
+    try {
+        const response: AxiosResponse<Image[]> = await axios.get<Image[]>("http://localhost:3000/images")
+        setImages(response.data)
+    } catch (err) {
+        console.error(err)
+    }
+}
   const uploadImage = async (data: ImageUpload) =>{
     try {
         axios.post("http://localhost:3000/images", {
@@ -52,8 +52,11 @@ const useImages = () =>{
     }
   }
 
+
   return{
     images,
+    fetchImages,
+    setImages,
     uploadImage,
     deleteImage
   }
